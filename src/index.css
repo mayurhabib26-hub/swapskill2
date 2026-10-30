@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Lenis Kinetic Momentum Scrolling ── */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+@layer base {
+  :root {
+    --primary-navy: #0B132B;
+    --dark-navy: #020C21;
+    --secondary-blue: #2563EB;
+    --mint-green: #BFDBFE;
+    --pale-mint: #EFF6FF;
+    --main-bg: #F8FAFD;
+    --card-bg: #FFFFFF;
+    --main-text: #020C21;
+    --secondary-text: #59627E;
+    --border-color: #E2E8F0;
+    --font-brand: 'Nunito Sans', system-ui, -apple-system, sans-serif;
+  }
+
+  html {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  body {
+    background-color: #F8FAFD;
+    color: #020C21;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+  }
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Custom subtle scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+::-webkit-scrollbar-thumb {
+  background: #BFDBFE;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2563EB;
+}
+
+/* Magic UI shimmer & animated border effects */
+.shimmer-badge {
+  background: linear-gradient(
+    90deg,
+    rgba(37, 99, 235, 0.08) 0%,
+    rgba(191, 219, 254, 0.5) 50%,
+    rgba(37, 99, 235, 0.08) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 4s infinite linear;
+}
+
+.gradient-border-card {
+  position: relative;
+  background: #FFFFFF;
+  border-radius: 1rem;
+}
+.gradient-border-card::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 1.1rem;
+  padding: 2px;
+  background: linear-gradient(135deg, #0B132B, #BFDBFE, #2563EB, #EFF6FF);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
